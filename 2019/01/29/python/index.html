@@ -14,10 +14,12 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="python 基础语法及入门知识总结ヽ(✿ﾟ▽ﾟ)ノ一．关于python的“hello word”程序python2和python3的print语句有些不同，这在使用时可能会给你带来一些麻烦； 例如python2中输出一个字符串： 1&amp;gt;&amp;gt;&amp;gt;print ’hello world’         #在python2中输出是一个语句 而在python3中我们则需要： 1&amp;gt;&amp;gt">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-01-30T05:45:23.136Z">
+<meta property="og:image" content="http://yoursite.com/2019/01/29/python/D:/博客/source/_posts/python/sorted(">
+<meta property="og:updated_time" content="2019-02-13T08:08:45.405Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python">
 <meta name="twitter:description" content="python 基础语法及入门知识总结ヽ(✿ﾟ▽ﾟ)ノ一．关于python的“hello word”程序python2和python3的print语句有些不同，这在使用时可能会给你带来一些麻烦； 例如python2中输出一个字符串： 1&amp;gt;&amp;gt;&amp;gt;print ’hello world’         #在python2中输出是一个语句 而在python3中我们则需要： 1&amp;gt;&amp;gt">
+<meta name="twitter:image" content="http://yoursite.com/2019/01/29/python/D:/博客/source/_posts/python/sorted(">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -111,15 +113,20 @@
 <p>remove( )——<strong>根据值删除元素</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">p_language = [<span class="string">'Java'</span>,<span class="string">'Python'</span>,<span class="string">'C++'</span>,<span class="string">'.NET'</span>,<span class="string">'JavaScript'</span>]</span><br><span class="line">print(p_language)</span><br><span class="line">p_language.remove(<span class="string">'Python'</span>)     <span class="comment">#删除元素'Python'</span></span><br><span class="line">print(p_language)</span><br></pre></td></tr></table></figure>
 <p><u>注意：方法remove( ) 只能删除在列表中它第一个遇到的指定的值，随之方法remove( )结束。</u></p>
-<h5 id="组织列表"><a href="#组织列表" class="headerlink" title="组织列表"></a>组织列表</h5><p>使用方法sort( )和sorted( )对列表进行排序（字母顺序）</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h5 id="组织列表"><a href="#组织列表" class="headerlink" title="组织列表"></a>组织列表</h5><p>使用sort( )和sorted( )对列表进行排序（字母顺序）</p>
+<p>sort( )</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">list = [<span class="number">9</span>,<span class="number">8</span>,<span class="number">7</span>,<span class="number">6</span>,<span class="number">5</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>]</span><br><span class="line">list.sort()			<span class="comment">#排序，但已经改变原列表</span></span><br><span class="line">print(list)</span><br></pre></td></tr></table></figure>
+<p>sorted()</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">list = [<span class="number">9</span>,<span class="number">8</span>,<span class="number">7</span>,<span class="number">6</span>,<span class="number">5</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>]</span><br><span class="line">new_list = sorted(list)</span><br><span class="line">print(list)		<span class="comment">#临时排序</span></span><br><span class="line">print(new_list)</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/01/29/python/D:/博客\source\_posts\python\sorted(" alt="sorted(  )">.PNG)</p>
+<p><u>注意：sort( )是内建方法,而sorted( )是内建函数，两者调用方法不同</u></p>
 <h5 id="打印列表"><a href="#打印列表" class="headerlink" title="打印列表"></a>打印列表</h5><p>reverse</p>
 <p>len</p>
 <h2 id="for循环"><a href="#for循环" class="headerlink" title="for循环"></a>for循环</h2>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/29/python/" data-id="cjrjxwq820002osu64h25dc0q" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/29/python/" data-id="cjs2x0t1i0001ucu62oqfa3eg" class="article-share-link">Share</a>
       
       
     </footer>
