@@ -90,7 +90,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/02/13/python requests/" data-id="cjsq2jjyc0000i4u6rwz7veg3" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/02/13/python requests/" data-id="cjsq327kv0000z8u6ebbjdgid" class="article-share-link">Share</a>
       
       
     </footer>
@@ -132,27 +132,33 @@
 <p>驼峰命名法</p>
 <h2 id="三-基础方法"><a href="#三-基础方法" class="headerlink" title="三.基础方法"></a>三.基础方法</h2><h5 id="Ⅰ-列表方法"><a href="#Ⅰ-列表方法" class="headerlink" title="Ⅰ.列表方法"></a>Ⅰ.列表方法</h5><p>append( )——<strong>在列表末尾添加元素</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">p_language = [<span class="string">'Java'</span>,<span class="string">'Python'</span>,<span class="string">'C++'</span>,<span class="string">'.NET'</span>]</span><br><span class="line">p_language.append(<span class="string">'JavaScript'</span>)</span><br><span class="line">print(p_language)</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/01/29/python/" alt="https://i.loli.net/2019/03/01/5c792e401fbfd.png"></p>
 <p>insert( )——<strong>在列表任何位置添加新元素</strong></p>
 <p>​    格式：列表名.insert(位置，’新元素‘)</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">p_language = [<span class="string">'Java'</span>,<span class="string">'Python'</span>,<span class="string">'C++'</span>,<span class="string">'.NET'</span>]</span><br><span class="line">p_language.insert(<span class="number">4</span>,<span class="string">'JavaScript'</span>)		<span class="comment">#在末尾添加新元素，注意列表从0开始索引.</span></span><br><span class="line">print(p_language)</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/01/29/python/" alt="https://i.loli.net/2019/03/01/5c792e7741b9f.png"></p>
 <p>del语句——<strong>删除列表中确定位置的元素</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">p_language = [<span class="string">'Java'</span>,<span class="string">'Python'</span>,<span class="string">'C++'</span>,<span class="string">'.NET'</span>,<span class="string">'JavaScript'</span>]</span><br><span class="line"><span class="keyword">del</span> p_language[<span class="number">1</span>]		<span class="comment">#删除列表中第二个元素</span></span><br><span class="line">print(p_language)</span><br></pre></td></tr></table></figure>
-<p>pop( )——<strong>弹出列表中元素</strong></p>
+<p><img src="/2019/01/29/python/" alt="https://i.loli.net/2019/03/01/5c792eb955759.png"></p>
+<p>op( )——<strong>弹出列表中元素</strong></p>
 <blockquote>
 <p>方法pop() 可删除列表末尾的元素，并让你能够接着使用它。术语弹出 弹出 （pop）源自这样的类比：列表就像一个栈，而删除列表末尾的元素相当于弹出栈顶元素。</p>
 <p>——Python编程：从入门到实践  [美] Eric Matthes</p>
 </blockquote>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">p_language = [<span class="string">'Java'</span>,<span class="string">'Python'</span>,<span class="string">'C++'</span>,<span class="string">'.NET'</span>,<span class="string">'JavaScript'</span>]</span><br><span class="line">language = p_language.pop(<span class="number">3</span>)     <span class="comment">#language用来存储被弹出的元素,这里被弹出的是第四个元素</span></span><br><span class="line">print(p_language)</span><br><span class="line">print(language)</span><br></pre></td></tr></table></figure>
 <p><u>注意：若pop（）后的括号内不填任何内容，则默认弹出最后一个元素。</u></p>
+<p><img src="/2019/01/29/python/" alt="https://i.loli.net/2019/03/01/5c792ef27bbbe.png"></p>
 <p>remove( )——<strong>根据值删除元素</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">p_language = [<span class="string">'Java'</span>,<span class="string">'Python'</span>,<span class="string">'C++'</span>,<span class="string">'.NET'</span>,<span class="string">'JavaScript'</span>]</span><br><span class="line">print(p_language)</span><br><span class="line">p_language.remove(<span class="string">'Python'</span>)     <span class="comment">#删除元素'Python'</span></span><br><span class="line">print(p_language)</span><br></pre></td></tr></table></figure>
 <p><u>注意：方法remove( ) 只能删除在列表中它第一个遇到的指定的值，随之方法remove( )结束。</u></p>
+<p><img src="/2019/01/29/python/" alt="https://i.loli.net/2019/03/01/5c792f3a2bb0d.png"></p>
 <h5 id="组织列表"><a href="#组织列表" class="headerlink" title="组织列表"></a>组织列表</h5><p>使用sort( )和sorted( )对列表进行排序（字母顺序）</p>
 <p>sort( )</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">list = [<span class="number">9</span>,<span class="number">8</span>,<span class="number">7</span>,<span class="number">6</span>,<span class="number">5</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>]</span><br><span class="line">list.sort()			<span class="comment">#排序，但已经改变原列表</span></span><br><span class="line">print(list)</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/01/29/python/" alt="https://i.loli.net/2019/03/01/5c792fd0bc3ce.png"></p>
 <p>sorted()</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">list = [<span class="number">9</span>,<span class="number">8</span>,<span class="number">7</span>,<span class="number">6</span>,<span class="number">5</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>]</span><br><span class="line">new_list = sorted(list)</span><br><span class="line">print(list)		<span class="comment">#临时排序</span></span><br><span class="line">print(new_list)</span><br></pre></td></tr></table></figure>
-<p><img src="/2019/01/29/python/sorted(" alt="sorted(  )">.PNG)</p>
+<p><img src="/2019/01/29/python/" alt="https://i.loli.net/2019/03/01/5c793001f2fbe.png"></p>
 <p><u>注意：sort( )是内建方法,而sorted( )是内建函数，两者调用方法不同</u></p>
 <h5 id="打印列表"><a href="#打印列表" class="headerlink" title="打印列表"></a>打印列表</h5><p>reverse</p>
 <p>len</p>
@@ -161,81 +167,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/29/python/" data-id="cjsq2jjym0002i4u6m1xjm0zk" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-title" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/01/28/title/" class="article-date">
-  <time datetime="2019-01-28T14:01:47.043Z" itemprop="datePublished">2019-01-28</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="测试用博客"><a href="#测试用博客" class="headerlink" title="测试用博客"></a>测试用博客</h1><h2 id="hello-hexo"><a href="#hello-hexo" class="headerlink" title="##hello hexo"></a>##hello hexo</h2><h3 id="thanks-github"><a href="#thanks-github" class="headerlink" title="###thanks github"></a>###thanks github</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&apos;&apos;&apos;</span><br><span class="line">hello hexo</span><br><span class="line">&apos;&apos;&apos;</span><br></pre></td></tr></table></figure>
-<h1 id="测试一下"><a href="#测试一下" class="headerlink" title="测试一下"></a>测试一下</h1><h2 id="测试一下-1"><a href="#测试一下-1" class="headerlink" title="测试一下"></a>测试一下</h2><h3 id="测试一下-2"><a href="#测试一下-2" class="headerlink" title="测试一下"></a>测试一下</h3><h4 id="测试一下-3"><a href="#测试一下-3" class="headerlink" title="测试一下"></a>测试一下</h4><h5 id="测试一下-4"><a href="#测试一下-4" class="headerlink" title="测试一下"></a>测试一下</h5><h6 id="测试一下-5"><a href="#测试一下-5" class="headerlink" title="测试一下"></a>测试一下</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">测试一下</span><br><span class="line"></span><br><span class="line">测试一下</span><br><span class="line"></span><br><span class="line">测试一下</span><br><span class="line"></span><br><span class="line">测试一下</span><br><span class="line"></span><br><span class="line">测试一下</span><br><span class="line"></span><br><span class="line">测试一下</span><br></pre></td></tr></table></figure>
-<p>该博客用于测试</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/28/title/" data-id="cjsq2jjyn0003i4u6heqhaurb" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/01/28/hello-world/" class="article-date">
-  <time datetime="2019-01-28T12:27:40.690Z" itemprop="datePublished">2019-01-28</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/28/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a> </p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/28/hello-world/" data-id="cjsq2jjyj0001i4u6yg8w2wzo" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/29/python/" data-id="cjsq327lb0001z8u6bysumve2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -281,14 +213,6 @@
         
           <li>
             <a href="/2019/01/29/python/">python</a>
-          </li>
-        
-          <li>
-            <a href="/2019/01/28/title/">(no title)</a>
-          </li>
-        
-          <li>
-            <a href="/2019/01/28/hello-world/">Hello World</a>
           </li>
         
       </ul>
