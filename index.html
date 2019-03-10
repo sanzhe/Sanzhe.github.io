@@ -85,12 +85,12 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="python-requests库"><a href="#python-requests库" class="headerlink" title="python requests库"></a>python requests库</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">return</span> = requests.get(url=<span class="string">'https://www.baidu.com'</span>)</span><br><span class="line">print(<span class="keyword">return</span>.status_code)	<span class="comment">#打印网页返回的状态值</span></span><br><span class="line">print(<span class="keyword">return</span>.text)   <span class="comment">#打印返回数据</span></span><br></pre></td></tr></table></figure>
-<p><img src="/2019/02/13/python requests/" alt="https://i.loli.net/2019/03/01/5c7929e0be848.png"></p>
+<p><img src="/2019/02/13/python requests/C:/Users\zhangxiaoyan\Desktop\捕获.PNG" alt="https://i.loli.net/2019/03/01/5c7929e0be848.png"></p>
 <h6 id="2开头-（请求成功）表示成功处理了请求的状态代码"><a href="#2开头-（请求成功）表示成功处理了请求的状态代码" class="headerlink" title="2开头 （请求成功）表示成功处理了请求的状态代码"></a><strong>2开头 （请求成功）表示成功处理了请求的状态代码</strong></h6><h6 id="3开头-（请求被重定向）表示要完成请求，需要进一步操作。-通常，这些状态代码用来重定向"><a href="#3开头-（请求被重定向）表示要完成请求，需要进一步操作。-通常，这些状态代码用来重定向" class="headerlink" title="3开头 （请求被重定向）表示要完成请求，需要进一步操作。 通常，这些状态代码用来重定向"></a><strong>3开头 （请求被重定向）表示要完成请求，需要进一步操作。 通常，这些状态代码用来重定向</strong></h6><h6 id="4开头-（请求错误）这些状态代码表示请求可能出错，妨碍了服务器的处理"><a href="#4开头-（请求错误）这些状态代码表示请求可能出错，妨碍了服务器的处理" class="headerlink" title="4开头 （请求错误）这些状态代码表示请求可能出错，妨碍了服务器的处理"></a><strong>4开头 （请求错误）这些状态代码表示请求可能出错，妨碍了服务器的处理</strong></h6><h6 id="5开头（服务器错误）这些状态代码表示服务器在尝试处理请求时发生内部错误。-这些错误可能是服务器本身的错误，而不是请求出错"><a href="#5开头（服务器错误）这些状态代码表示服务器在尝试处理请求时发生内部错误。-这些错误可能是服务器本身的错误，而不是请求出错" class="headerlink" title="5开头（服务器错误）这些状态代码表示服务器在尝试处理请求时发生内部错误。 这些错误可能是服务器本身的错误，而不是请求出错"></a><strong>5开头（服务器错误）这些状态代码表示服务器在尝试处理请求时发生内部错误。 这些错误可能是服务器本身的错误，而不是请求出错</strong></h6>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/02/13/python requests/" data-id="cjsq38m3r0000ggu68xwanchr" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/02/13/python requests/" data-id="cjsq3ory30001r0u6808tscv7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -132,14 +132,14 @@
 <p>驼峰命名法</p>
 <h2 id="三-基础方法"><a href="#三-基础方法" class="headerlink" title="三.基础方法"></a>三.基础方法</h2><h5 id="Ⅰ-列表方法"><a href="#Ⅰ-列表方法" class="headerlink" title="Ⅰ.列表方法"></a>Ⅰ.列表方法</h5><p>append( )——<strong>在列表末尾添加元素</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">p_language = [<span class="string">'Java'</span>,<span class="string">'Python'</span>,<span class="string">'C++'</span>,<span class="string">'.NET'</span>]</span><br><span class="line">p_language.append(<span class="string">'JavaScript'</span>)</span><br><span class="line">print(p_language)</span><br></pre></td></tr></table></figure>
-<p><img src="/2019/01/29/python/" alt="https://i.loli.net/2019/03/01/5c792e401fbfd.png"></p>
+<p><img src="/2019/01/29/python/C:/Users\zhangxiaoyan\Desktop\捕获1.PNG" alt="https://i.loli.net/2019/03/01/5c792e401fbfd.png"></p>
 <p>insert( )——<strong>在列表任何位置添加新元素</strong></p>
 <p>​    格式：列表名.insert(位置，’新元素‘)</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">p_language = [<span class="string">'Java'</span>,<span class="string">'Python'</span>,<span class="string">'C++'</span>,<span class="string">'.NET'</span>]</span><br><span class="line">p_language.insert(<span class="number">4</span>,<span class="string">'JavaScript'</span>)		<span class="comment">#在末尾添加新元素，注意列表从0开始索引.</span></span><br><span class="line">print(p_language)</span><br></pre></td></tr></table></figure>
-<p><img src="/2019/01/29/python/" alt="https://i.loli.net/2019/03/01/5c792e7741b9f.png"></p>
+<p><img src="/2019/01/29/python/C:/Users\zhangxiaoyan\Desktop\捕获2.PNG" alt="https://i.loli.net/2019/03/01/5c792e7741b9f.png"></p>
 <p>del语句——<strong>删除列表中确定位置的元素</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">p_language = [<span class="string">'Java'</span>,<span class="string">'Python'</span>,<span class="string">'C++'</span>,<span class="string">'.NET'</span>,<span class="string">'JavaScript'</span>]</span><br><span class="line"><span class="keyword">del</span> p_language[<span class="number">1</span>]		<span class="comment">#删除列表中第二个元素</span></span><br><span class="line">print(p_language)</span><br></pre></td></tr></table></figure>
-<p><img src="/2019/01/29/python/" alt="https://i.loli.net/2019/03/01/5c792eb955759.png"></p>
+<p><img src="/2019/01/29/python/C:/Users\zhangxiaoyan\Desktop\捕获3.PNG" alt="https://i.loli.net/2019/03/01/5c792eb955759.png"></p>
 <p>op( )——<strong>弹出列表中元素</strong></p>
 <blockquote>
 <p>方法pop() 可删除列表末尾的元素，并让你能够接着使用它。术语弹出 弹出 （pop）源自这样的类比：列表就像一个栈，而删除列表末尾的元素相当于弹出栈顶元素。</p>
@@ -147,18 +147,18 @@
 </blockquote>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">p_language = [<span class="string">'Java'</span>,<span class="string">'Python'</span>,<span class="string">'C++'</span>,<span class="string">'.NET'</span>,<span class="string">'JavaScript'</span>]</span><br><span class="line">language = p_language.pop(<span class="number">3</span>)     <span class="comment">#language用来存储被弹出的元素,这里被弹出的是第四个元素</span></span><br><span class="line">print(p_language)</span><br><span class="line">print(language)</span><br></pre></td></tr></table></figure>
 <p><u>注意：若pop（）后的括号内不填任何内容，则默认弹出最后一个元素。</u></p>
-<p><img src="/2019/01/29/python/" alt="https://i.loli.net/2019/03/01/5c792ef27bbbe.png"></p>
+<p><img src="/2019/01/29/python/C:/Users\zhangxiaoyan\Desktop\捕获4.PNG" alt="https://i.loli.net/2019/03/01/5c792ef27bbbe.png"></p>
 <p>remove( )——<strong>根据值删除元素</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">p_language = [<span class="string">'Java'</span>,<span class="string">'Python'</span>,<span class="string">'C++'</span>,<span class="string">'.NET'</span>,<span class="string">'JavaScript'</span>]</span><br><span class="line">print(p_language)</span><br><span class="line">p_language.remove(<span class="string">'Python'</span>)     <span class="comment">#删除元素'Python'</span></span><br><span class="line">print(p_language)</span><br></pre></td></tr></table></figure>
 <p><u>注意：方法remove( ) 只能删除在列表中它第一个遇到的指定的值，随之方法remove( )结束。</u></p>
-<p><img src="/2019/01/29/python/" alt="https://i.loli.net/2019/03/01/5c792f3a2bb0d.png"></p>
+<p><img src="/2019/01/29/python/C:/Users\zhangxiaoyan\Desktop\捕获5.PNG" alt="https://i.loli.net/2019/03/01/5c792f3a2bb0d.png"></p>
 <h5 id="组织列表"><a href="#组织列表" class="headerlink" title="组织列表"></a>组织列表</h5><p>使用sort( )和sorted( )对列表进行排序（字母顺序）</p>
 <p>sort( )</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">list = [<span class="number">9</span>,<span class="number">8</span>,<span class="number">7</span>,<span class="number">6</span>,<span class="number">5</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>]</span><br><span class="line">list.sort()			<span class="comment">#排序，但已经改变原列表</span></span><br><span class="line">print(list)</span><br></pre></td></tr></table></figure>
-<p><img src="/2019/01/29/python/" alt="https://i.loli.net/2019/03/01/5c792fd0bc3ce.png"></p>
+<p><img src="/2019/01/29/python/C:/Users\zhangxiaoyan\Desktop\捕获6.PNG" alt="https://i.loli.net/2019/03/01/5c792fd0bc3ce.png"></p>
 <p>sorted()</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">list = [<span class="number">9</span>,<span class="number">8</span>,<span class="number">7</span>,<span class="number">6</span>,<span class="number">5</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>]</span><br><span class="line">new_list = sorted(list)</span><br><span class="line">print(list)		<span class="comment">#临时排序</span></span><br><span class="line">print(new_list)</span><br></pre></td></tr></table></figure>
-<p><img src="/2019/01/29/python/" alt="https://i.loli.net/2019/03/01/5c793001f2fbe.png"></p>
+<p><img src="/2019/01/29/python/C:/Users\zhangxiaoyan\Desktop\捕获7.PNG" alt="https://i.loli.net/2019/03/01/5c793001f2fbe.png"></p>
 <p><u>注意：sort( )是内建方法,而sorted( )是内建函数，两者调用方法不同</u></p>
 <h5 id="打印列表"><a href="#打印列表" class="headerlink" title="打印列表"></a>打印列表</h5><p>reverse</p>
 <p>len</p>
@@ -167,7 +167,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/29/python/" data-id="cjsq38m3x0001ggu663vws0vq" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/29/python/" data-id="cjsq3orxy0000r0u6f9oowm79" class="article-share-link">Share</a>
       
       
     </footer>
