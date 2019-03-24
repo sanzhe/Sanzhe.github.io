@@ -14,10 +14,18 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="python 基础语法及入门知识总结ヽ(✿ﾟ▽ﾟ)ノ一．关于python的“hello word”程序python2和python3的print语句有些不同，这在使用时可能会给你带来一些麻烦； 例如python2中输出一个字符串： 1&amp;gt;&amp;gt;&amp;gt;print ’hello world’         #在python2中输出是一个语句 而在python3中我们则需要： 1&amp;gt;&amp;gt">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-23T03:50:46.484Z">
+<meta property="og:image" content="https://i.loli.net/2019/03/01/5c792e401fbfd.png">
+<meta property="og:image" content="https://i.loli.net/2019/03/01/5c792e7741b9f.png">
+<meta property="og:image" content="https://i.loli.net/2019/03/01/5c792eb955759.png">
+<meta property="og:image" content="https://i.loli.net/2019/03/01/5c792ef27bbbe.png">
+<meta property="og:image" content="https://i.loli.net/2019/03/01/5c792f3a2bb0d.png">
+<meta property="og:image" content="https://i.loli.net/2019/03/01/5c792fd0bc3ce.png">
+<meta property="og:image" content="https://i.loli.net/2019/03/01/5c793001f2fbe.png">
+<meta property="og:updated_time" content="2019-03-24T10:31:28.975Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python">
 <meta name="twitter:description" content="python 基础语法及入门知识总结ヽ(✿ﾟ▽ﾟ)ノ一．关于python的“hello word”程序python2和python3的print语句有些不同，这在使用时可能会给你带来一些麻烦； 例如python2中输出一个字符串： 1&amp;gt;&amp;gt;&amp;gt;print ’hello world’         #在python2中输出是一个语句 而在python3中我们则需要： 1&amp;gt;&amp;gt">
+<meta name="twitter:image" content="https://i.loli.net/2019/03/01/5c792e401fbfd.png">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -96,14 +104,14 @@
 <p>驼峰命名法</p>
 <h2 id="三-基础方法"><a href="#三-基础方法" class="headerlink" title="三.基础方法"></a>三.基础方法</h2><h5 id="Ⅰ-列表方法"><a href="#Ⅰ-列表方法" class="headerlink" title="Ⅰ.列表方法"></a>Ⅰ.列表方法</h5><p>append( )——<strong>在列表末尾添加元素</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">p_language = [<span class="string">'Java'</span>,<span class="string">'Python'</span>,<span class="string">'C++'</span>,<span class="string">'.NET'</span>]</span><br><span class="line">p_language.append(<span class="string">'JavaScript'</span>)</span><br><span class="line">print(p_language)</span><br></pre></td></tr></table></figure>
-<p><a href="https://i.loli.net/2019/03/01/5c792e401fbfd.png" target="_blank" rel="noopener"></a></p>
+<p><img src="https://i.loli.net/2019/03/01/5c792e401fbfd.png" alt=""></p>
 <p>insert( )——<strong>在列表任何位置添加新元素</strong></p>
 <p>​    格式：列表名.insert(位置，’新元素‘)</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">p_language = [<span class="string">'Java'</span>,<span class="string">'Python'</span>,<span class="string">'C++'</span>,<span class="string">'.NET'</span>]</span><br><span class="line">p_language.insert(<span class="number">4</span>,<span class="string">'JavaScript'</span>)		<span class="comment">#在末尾添加新元素，注意列表从0开始索引.</span></span><br><span class="line">print(p_language)</span><br></pre></td></tr></table></figure>
-<p><a href="https://i.loli.net/2019/03/01/5c792e7741b9f.png" target="_blank" rel="noopener">https://i.loli.net/2019/03/01/5c792e7741b9f.png</a></p>
+<p><img src="https://i.loli.net/2019/03/01/5c792e7741b9f.png" alt=""></p>
 <p>del语句——<strong>删除列表中确定位置的元素</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">p_language = [<span class="string">'Java'</span>,<span class="string">'Python'</span>,<span class="string">'C++'</span>,<span class="string">'.NET'</span>,<span class="string">'JavaScript'</span>]</span><br><span class="line"><span class="keyword">del</span> p_language[<span class="number">1</span>]		<span class="comment">#删除列表中第二个元素</span></span><br><span class="line">print(p_language)</span><br></pre></td></tr></table></figure>
-<p><a href="https://i.loli.net/2019/03/01/5c792eb955759.png" target="_blank" rel="noopener">https://i.loli.net/2019/03/01/5c792eb955759.png</a></p>
+<p><img src="https://i.loli.net/2019/03/01/5c792eb955759.png" alt=""></p>
 <p>op( )——<strong>弹出列表中元素</strong></p>
 <blockquote>
 <p>方法pop() 可删除列表末尾的元素，并让你能够接着使用它。术语弹出 弹出 （pop）源自这样的类比：列表就像一个栈，而删除列表末尾的元素相当于弹出栈顶元素。</p>
@@ -111,18 +119,18 @@
 </blockquote>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">p_language = [<span class="string">'Java'</span>,<span class="string">'Python'</span>,<span class="string">'C++'</span>,<span class="string">'.NET'</span>,<span class="string">'JavaScript'</span>]</span><br><span class="line">language = p_language.pop(<span class="number">3</span>)     <span class="comment">#language用来存储被弹出的元素,这里被弹出的是第四个元素</span></span><br><span class="line">print(p_language)</span><br><span class="line">print(language)</span><br></pre></td></tr></table></figure>
 <p><u>注意：若pop（）后的括号内不填任何内容，则默认弹出最后一个元素。</u></p>
-<p><a href="https://i.loli.net/2019/03/01/5c792ef27bbbe.png" target="_blank" rel="noopener">https://i.loli.net/2019/03/01/5c792ef27bbbe.png</a></p>
+<p><img src="https://i.loli.net/2019/03/01/5c792ef27bbbe.png" alt=""></p>
 <p>remove( )——<strong>根据值删除元素</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">p_language = [<span class="string">'Java'</span>,<span class="string">'Python'</span>,<span class="string">'C++'</span>,<span class="string">'.NET'</span>,<span class="string">'JavaScript'</span>]</span><br><span class="line">print(p_language)</span><br><span class="line">p_language.remove(<span class="string">'Python'</span>)     <span class="comment">#删除元素'Python'</span></span><br><span class="line">print(p_language)</span><br></pre></td></tr></table></figure>
 <p><u>注意：方法remove( ) 只能删除在列表中它第一个遇到的指定的值，随之方法remove( )结束。</u></p>
-<p><a href="https://i.loli.net/2019/03/01/5c792f3a2bb0d.png" target="_blank" rel="noopener">https://i.loli.net/2019/03/01/5c792f3a2bb0d.png</a></p>
+<p><img src="https://i.loli.net/2019/03/01/5c792f3a2bb0d.png" alt=""></p>
 <h5 id="组织列表"><a href="#组织列表" class="headerlink" title="组织列表"></a>组织列表</h5><p>使用sort( )和sorted( )对列表进行排序（字母顺序）</p>
-<p>sort( )</p>
+<p>sort( )如下</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">list = [<span class="number">9</span>,<span class="number">8</span>,<span class="number">7</span>,<span class="number">6</span>,<span class="number">5</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>]</span><br><span class="line">list.sort()			<span class="comment">#排序，但已经改变原列表</span></span><br><span class="line">print(list)</span><br></pre></td></tr></table></figure>
-<p><a href="https://i.loli.net/2019/03/01/5c792fd0bc3ce.png" target="_blank" rel="noopener">https://i.loli.net/2019/03/01/5c792fd0bc3ce.png</a></p>
-<p>sorted()</p>
+<p><img src="https://i.loli.net/2019/03/01/5c792fd0bc3ce.png" alt=""></p>
+<p>sorted()如下</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">list = [<span class="number">9</span>,<span class="number">8</span>,<span class="number">7</span>,<span class="number">6</span>,<span class="number">5</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>]</span><br><span class="line">new_list = sorted(list)</span><br><span class="line">print(list)		<span class="comment">#临时排序</span></span><br><span class="line">print(new_list)</span><br></pre></td></tr></table></figure>
-<p><a href="https://i.loli.net/2019/03/01/5c793001f2fbe.png" target="_blank" rel="noopener">https://i.loli.net/2019/03/01/5c793001f2fbe.png</a></p>
+<p><img src="https://i.loli.net/2019/03/01/5c793001f2fbe.png" alt=""></p>
 <p><u>注意：sort( )是内建方法,而sorted( )是内建函数，两者调用方法不同</u></p>
 <h5 id="打印列表"><a href="#打印列表" class="headerlink" title="打印列表"></a>打印列表</h5><p>reverse</p>
 <p>len</p>
@@ -131,7 +139,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/29/python/" data-id="cjtkzzp520001ngu6zib6apy8" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/29/python/" data-id="cjtmsbs730001k4u64gp2gsxb" class="article-share-link">Share</a>
       
       
     </footer>
